@@ -1,9 +1,9 @@
 import { useForm, useFieldArray, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { submitForm } from "./formSlice";
+import { schema } from "./formSchema";
 
 const issueTypes = [
   "Bug Report",
@@ -12,16 +12,6 @@ const issueTypes = [
 ] as const;
 
 const tagOptions = ["UI", "Backend", "Performance"] as const;
-
-const schema = z.object({
-  fullName: z.string().min(1, "Full Name is required"),
-  email: z.string().email("Invalid email"),
-  issueType: z.enum(issueTypes),
-  tags: z.array(z.enum(tagOptions)),
-  steps: z
-    .array(z.object({ step: z.string().min(1, "Step is required") }))
-    .min(1, "At least one step is required"),
-});
 
 type FormData = z.infer<typeof schema>;
 
