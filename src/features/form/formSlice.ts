@@ -8,7 +8,7 @@ export interface SupportFormData {
   steps: { step: string }[];
 }
 
-const initialState: SupportFormData = {
+export const initialState: SupportFormData = {
   fullName: "",
   email: "",
   issueType: "Bug Report",
