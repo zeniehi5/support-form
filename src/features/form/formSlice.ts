@@ -20,7 +20,7 @@ const formSlice = createSlice({
   name: "form",
   initialState,
   reducers: {
-    submitForm(state, action: PayloadAction<SupportFormData>) {
+    submitForm(_, action: PayloadAction<SupportFormData>) {
       return action.payload;
     },
   },

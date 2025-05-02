@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { submitForm } from "./formSlice";
 import { schema, FormData, issueTypes, tagOptions } from "./formSchema";
-import { z } from "zod";
 
 export default function SupportForm() {
   const dispatch = useDispatch();
