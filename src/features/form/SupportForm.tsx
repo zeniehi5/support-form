@@ -3,17 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { submitForm } from "./formSlice";
-import { schema } from "./formSchema";
-
-const issueTypes = [
-  "Bug Report",
-  "Feature Request",
-  "General Inquiry",
-] as const;
-
-const tagOptions = ["UI", "Backend", "Performance"] as const;
-
-type FormData = z.infer<typeof schema>;
+import { schema, FormData, issueTypes, tagOptions } from "./formSchema";
+import { z } from "zod";
 
 export default function SupportForm() {
   const dispatch = useDispatch();
@@ -30,7 +21,7 @@ export default function SupportForm() {
       fullName: "",
       email: "",
       issueType: "Bug Report",
-      tags: [] as (typeof tagOptions)[number][],
+      tags: [],
       steps: [{ step: "" }],
     },
   });
